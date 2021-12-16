@@ -1,20 +1,13 @@
-const express = require("express");
-const router = express.Router();
+const { Router } = require("express");
+const { getUsuarioById } = require("../controle/usuario");
+const router = Router();
 
-router.get("/", function(req, res) {
-    res.send([]);
-});
+router.get("/", async (req, res) => {
+  const usuarioId = req.usuarioId;
 
-router.post("/", function (req, res) {
-    res.send({});
-});
+  let resultado = await getUsuarioById(usuarioId);
 
-router.put("/:id", function (req, res) {
-    res.send({});
-});
-
-router.delete("/:id", function (req, res) {
-    res.send({});
+  res.send(resultado);
 });
 
 module.exports = router;
